@@ -10,16 +10,33 @@ var charInput;
 
 // when button is clicked, run the buildIt()
 var button = document.getElementById("growTree");
-button.addEventListener("click", buildIt);
+var num = document.getElementById("inputNum");
+var char = document.getElementById("inputChar");
+// no need for .value above add it below here at line 16
+button.addEventListener("click", function(event) {
+    if (num.value === "" || char.value === "") {
+        alert("Both fields must have value");
+    } else {
+        buildIt();
+    }
+});
 
-// Add an event handler to the input field that checks if the user pressed the enter key, and if that happens, perform the conversion.
+function isEmpty(event) {
+    if (num.value === "" || char.value === "") {
+        alert("Both fields must have value");
+    } else {
+        buildIt();
+    }
+};
+
+// if return button is hit, run buildIt()
 var enter = document.getElementById("inputNum");
 enter.addEventListener("keydown", function(event) {
     if(event.keyCode == 13) {
         event.preventDefault();
     }
     if(event.keyCode == 13) {
-        buildIt();
+        isEmpty();
     }
 });
 
@@ -29,7 +46,7 @@ enter.addEventListener("keydown", function(event) {
         event.preventDefault();
     }
     if(event.keyCode == 13) {
-        buildIt();
+        isEmpty();
     }
 });
 
